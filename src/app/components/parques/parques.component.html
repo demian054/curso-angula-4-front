@@ -1,0 +1,12 @@
+<div class="col-lg-8 col-lg-offset-2" [@fadeIn]>
+
+<h2>{{nombre}}</h2>
+
+<ul>
+  <li>Metros : {{metros}}</li>
+  <li>Vegetacion : {{vegetacion}}</li>
+  <li><span *ngIf="abierto == true">Abierto</span></li>
+  <li><span *ngIf="abierto != true">Cerrado</span></li>
+</ul>
+<button (click)="emitirEvento()">Mostrar</button>
+</div>

@@ -1,0 +1,24 @@
+<div class="col-lg-6">
+  <h1>{{title}}</h1>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-7">
+
+    <div class="alert alert-success" *ngIf="estatus == 'success'">
+      Login Correcto
+    </div>
+
+    <div class="alert alert-warning" *ngIf="estatus == 'error'">
+      Login Incorrecto
+    </div>
+    <p>
+      <label>Correo Electronico</label>
+      <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required>
+      <span *ngIf="!email.valid && email.touched">Email Obligatorio</span>
+    </p>
+    <p>
+      <label>Password</label>
+      <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" required>
+      <span *ngIf="!password.valid && password.touched">Password Obligatorio</span>
+    </p>
+    <input type="submit" value="Entrar" class="btn btn-success" [disabled]="!loginForm.form.valid">
+  </form>
+</div>

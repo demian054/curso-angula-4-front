@@ -1,0 +1,34 @@
+
+<div class="col-lg-10" [@fadeLateral]>
+  <h3>{{title}}</h3>
+  <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+    <p>
+      <label >Nombre</label>
+      <input type="text" name="name" #name="ngModel" [(ngModel)]="animal.name" class="form-control" required>
+      <span *ngIf="!name.valid && name.touched"></span>
+    </p>
+    <p>
+      <label >Descripción</label>
+      <textarea class="form-control" name="description" #description="ngModel" [(ngModel)]="animal.description" class="form-control"  required></textarea>
+      <span *ngIf="!description.valid && description.touched"></span>
+    </p>
+    <p>
+      <label >año</label>
+      <input type="text" name="year" #year="ngModel" [(ngModel)]="animal.year" class="form-control"  required>
+      <span *ngIf="!year.valid && year.touched"></span>
+    </p>
+
+    <div *ngIf="isEdit && animal.image">
+      <div class="animal_image">
+        <img src="{{url + 'get-image-animal/'+ animal.image}}" alt="">
+      </div>
+    </div>
+
+    <p>
+      <label >Imagen del Animal</label>
+      <input type="file" placeholder="Subir Imagen" (change)="fileChangeEvent($event)">
+    </p>
+
+    <input type="submit" value="{{title}}" class="btn btn-success">
+  </form>
+</div>
